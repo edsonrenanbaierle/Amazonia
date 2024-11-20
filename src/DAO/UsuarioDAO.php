@@ -28,8 +28,13 @@ class UsuarioDAO
 
         $token = Response::generateToken($user);
 
+        unset($user["senha"]);
+        unset($user["id"]);
         $coon = null;
         
-        return $token;
+        return [
+            "token" => $token,
+            "user_data" => $user
+        ];
     }
 }
