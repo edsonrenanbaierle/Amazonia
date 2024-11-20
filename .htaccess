@@ -1,4 +1,10 @@
 RewriteEngine On
+
+# Serve arquivos de imagens diretamente
+RewriteCond %{REQUEST_URI} ^/imgs/
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
+RewriteRule ^ /public%{REQUEST_URI} [L]
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?path=$1 [QSA,L]

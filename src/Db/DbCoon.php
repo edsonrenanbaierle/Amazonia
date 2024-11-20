@@ -4,6 +4,7 @@ namespace App\Db;
 
 use App\http\Request;
 use App\http\Response;
+use App\Utils\ImageUtils;
 use Exception;
 
 class DbCoon
@@ -75,6 +76,16 @@ class DbCoon
             $data["senha"] = password_hash($data["senha"], PASSWORD_DEFAULT);
         }
 
+        if(isset($data["mapa_imagem"])){
+           $path = (new ImageUtils())->saveImage($data["mapa_imagem"]);
+           $data["mapa_imagem"] = $path;
+        }
+
+        if(isset($data['imagem'])){
+            $path = (new ImageUtils())->saveImage($data['imagem']);
+            $data['imagem'] = $path;
+        }
+
         $db = self::coon();
         $columns = implode(", ", array_keys($data));
         $placeholders = ":" . implode(", :", array_keys($data));
@@ -104,7 +115,7 @@ class DbCoon
 
         return $stmt->execute() && $stmt->rowCount() > 0
             ? true
-            : throw new \Exception("Erro ao excluir o registro especificado");
+            : throw new \Exception("Erro ao excluir o registro especificado, registro não encontrado!");
     }
 
     // Função para realizar UPDATE
@@ -114,6 +125,16 @@ class DbCoon
             $token = Request::authorization();
             $id = $token->id_usuario;
         }
+
+        if(isset($data["mapa_imagem"])){
+            $path = (new ImageUtils())->saveImage($data["mapa_imagem"]);
+            $data["mapa_imagem"] = $path;
+         }
+ 
+         if(isset($data['imagem'])){
+             $path = (new ImageUtils())->saveImage($data['imagem']);
+             $data['imagem'] = $path;
+         }
 
         $db = self::coon();
         $setClause = implode(", ", array_map(fn($key) => "$key = :$key", array_keys($data)));

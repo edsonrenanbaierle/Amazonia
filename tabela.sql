@@ -6,7 +6,8 @@ USE amazonia
 CREATE TABLE Especie (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_cientifico VARCHAR(255) NOT NULL,
-    descricao TEXT
+    descricao TEXT,
+    imagem TEXT,
 );
 
 -- Tabela: Taxonomia

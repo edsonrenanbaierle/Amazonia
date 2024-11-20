@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\DAO\EspecieDAO;
 use App\http\Request;
 
 class EspecieController extends BaseController
@@ -16,5 +17,9 @@ class EspecieController extends BaseController
         ];
 
         parent::__construct('Especie', $especie_columns);
+    }
+
+    public function delete($id){
+       return (new EspecieDAO())->delete($id[0]);
     }
 }
