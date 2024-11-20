@@ -63,16 +63,16 @@ class DbCoon
     // Função para realizar INSERT
     public static function insert($table, $data, $dados_obrigatorios = [])
     {
-        if($table === "Usuario"){
-            $data["senha"] = password_hash($data["senha"], PASSWORD_DEFAULT);
-        }
-
         if(sizeof($dados_obrigatorios) >= 1){
             foreach ($dados_obrigatorios as $key => $dado_obrigatorio) {
                 if(empty($data[$dado_obrigatorio])){
                     throw new Exception("Erro: " . $dado_obrigatorio . " não especificado!");
                 }
             }
+        }
+
+        if($table === "Usuario"){
+            $data["senha"] = password_hash($data["senha"], PASSWORD_DEFAULT);
         }
 
         $db = self::coon();
