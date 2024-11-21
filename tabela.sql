@@ -7,7 +7,7 @@ CREATE TABLE Especie (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome_cientifico VARCHAR(255) NOT NULL,
     descricao TEXT,
-    imagem TEXT,
+    imagem LONGTEXT
 );
 
 -- Tabela: Taxonomia
@@ -66,7 +66,7 @@ CREATE TABLE OcorrenciaNatural (
     especie_id INT NOT NULL,
     latitudes VARCHAR(255),
     variacao_altitudinal VARCHAR(255),
-    mapa_imagem TEXT,
+    mapa_imagem LONGTEXT,
     FOREIGN KEY (especie_id) REFERENCES Especie(id)
 );
 
@@ -157,7 +157,7 @@ CREATE TABLE Solos (
 CREATE TABLE Anexos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     especie_id INT NOT NULL,
-    imagem TEXT,
+    imagem LONGTEXT,
     legenda TEXT,
     FOREIGN KEY (especie_id) REFERENCES Especie(id)
 );

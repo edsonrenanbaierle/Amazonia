@@ -13,7 +13,8 @@ class EspecieController extends BaseController
         $especie_columns = [
             "id",
             "nome_cientifico",
-            "descricao"
+            "descricao",
+            "imagem"
         ];
 
         parent::__construct('Especie', $especie_columns);

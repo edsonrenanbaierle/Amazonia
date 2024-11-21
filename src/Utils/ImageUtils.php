@@ -2,8 +2,23 @@
 
 namespace App\Utils;
 
+use Exception;
+
 class ImageUtils
 {
+    public function validaTamanhoImagem($imagem){
+
+        $maxSize = 2 * 1024 * 1024; // 2MB em bytes
+        $base64 = explode(',', $imagem);
+
+        $base64Length = strlen(rtrim($base64[1], "=")) * 3 / 4;
+
+
+        if ($base64Length > $maxSize) {
+           throw new Exception("Imagem muito grande, maximo permitido 2MB");
+        }
+    }
+
     public function saveImage($fileConteudo){
         $nomeArq = uniqid();
 

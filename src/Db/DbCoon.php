@@ -45,8 +45,7 @@ class DbCoon
     public static function selectById($table, $id, $columns = ['*'])
     {
         if($table === "Usuario"){
-            $token = Request::authorization();
-            $id = $token->id_usuario;
+            throw new Exception("Sem Permissão!");
         }
 
         $db = self::coon();
@@ -76,14 +75,12 @@ class DbCoon
             $data["senha"] = password_hash($data["senha"], PASSWORD_DEFAULT);
         }
 
-        if(isset($data["mapa_imagem"])){
-           $path = (new ImageUtils())->saveImage($data["mapa_imagem"]);
-           $data["mapa_imagem"] = $path;
+        if (isset($data["mapa_imagem"])) {
+            (new ImageUtils())->validaTamanhoImagem($data["mapa_imagem"]);
         }
 
-        if(isset($data['imagem'])){
-            $path = (new ImageUtils())->saveImage($data['imagem']);
-            $data['imagem'] = $path;
+        if (isset($data['imagem'])) {
+            (new ImageUtils())->validaTamanhoImagem($data['imagem']);
         }
 
         $db = self::coon();
@@ -126,15 +123,13 @@ class DbCoon
             $id = $token->id_usuario;
         }
 
-        if(isset($data["mapa_imagem"])){
-            $path = (new ImageUtils())->saveImage($data["mapa_imagem"]);
-            $data["mapa_imagem"] = $path;
-         }
- 
-         if(isset($data['imagem'])){
-             $path = (new ImageUtils())->saveImage($data['imagem']);
-             $data['imagem'] = $path;
-         }
+        if (isset($data["mapa_imagem"])) {
+            (new ImageUtils())->validaTamanhoImagem($data["mapa_imagem"]);
+        }
+
+        if (isset($data['imagem'])) {
+            (new ImageUtils())->validaTamanhoImagem($data['imagem']);
+        }
 
         $db = self::coon();
         $setClause = implode(", ", array_map(fn($key) => "$key = :$key", array_keys($data)));
