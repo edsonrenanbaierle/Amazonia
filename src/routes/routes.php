@@ -86,6 +86,21 @@ $routes = [
     "POST/usuarios" => "UsuarioController@create",
     "PUT/usuarios/{id}" => "UsuarioController@update",
     "DELETE/usuarios/{id}" => "UsuarioController@delete",
-    "POST/usuarios/login"  => "UsuarioController@login"
+    "POST/usuarios/login"  => "UsuarioController@login",
+
+    "GET/taxonomias/especie/{id}" => "TaxonomiaController@findOneEspecieId",
+    "GET/descricoes-botanicas/especie/{id}" => "DescricaoBotanicaController@findOneEspecieId",
+    "GET/biologias-reprodutivas/especie/{id}" => "BiologiaReprodutivaController@findOneEspecieId",
+    "GET/ocorrencias-naturais/especie/{id}" => "OcorrenciaNaturalController@findOneEspecieId",
+    "GET/ocorrencias-naturais/especie/{id}" => "OcorrenciaNaturalController@findOneEspecieId",
+    "GET/aspectos-ecologicos/especie/{id}" => "AspectosEcologicosController@findOneEspecieId",
+    "GET/produtos-utilizacoes/especie/{id}" => "ProdutosUtilizacoesController@findOneEspecieId",
+    "GET/composicoes-biotecnologicas/especie/{id}" => "ComposicaoBiotecnologicaController@findOneEspecieId",
+    "GET/cultivos-viveiros/especie/{id}" => "CultivoViveirosController@findOneEspecieId",
+    "GET/prodcoes-mudas/especie/{id}" => "ProducaoMudasController@findOneEspecieId",
+    "GET/pragas/especie/{id}" => "PragasController@findOneEspecieId",
+    "GET/solos/especie/{id}" => "SolosController@findOneEspecieId",
+    "GET/anexos/especie/{id}" => "AnexosController@findOneEspecieId"
+
 
 ];

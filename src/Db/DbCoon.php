@@ -60,6 +60,25 @@ class DbCoon
         return $data ? $data : throw new \Exception("Falha ao buscar, dado especificado não encontrato!");
     }
 
+    // Função para realizar SELECT com base no ID
+    public static function selectByIdEspecieId($table, $id, $columns = ['*'])
+    {
+        if($table === "Usuario"){
+            throw new Exception("Sem Permissão!");
+        }
+
+        $db = self::coon();
+        $columnsStr = implode(", ", $columns);
+
+        $query = "SELECT $columnsStr FROM $table WHERE especie_id = :id";
+        $stmt = $db->prepare($query);
+        $stmt->bindValue(':id', $id, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        $data =  $stmt->fetch();
+        return $data ? $data : throw new \Exception("Falha ao buscar, dado especificado não encontrato!");
+    }
+
     // Função para realizar INSERT
     public static function insert($table, $data, $dados_obrigatorios = [])
     {

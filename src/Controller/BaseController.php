@@ -28,6 +28,11 @@ class BaseController
         return DbCoon::selectById($this->table_name, $id[0], $this->columns);
     }
 
+    public function findOneEspecieId($id)
+    {
+        return DbCoon::selectByIdEspecieId($this->table_name, $id[0], $this->columns);
+    }
+
     public function create()
     {
         $data = Request::requestBody();
