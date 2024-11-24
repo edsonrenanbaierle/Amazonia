@@ -94,11 +94,11 @@ class DbCoon
             $data["senha"] = password_hash($data["senha"], PASSWORD_DEFAULT);
         }
 
-        if (isset($data["mapa_imagem"])) {
+        if (isset($data["mapa_imagem"]) && $data["mapa_imagem"] != "") {
             (new ImageUtils())->validaTamanhoImagem($data["mapa_imagem"]);
         }
 
-        if (isset($data['imagem'])) {
+        if (isset($data['imagem']) && $data['imagem'] != "") {
             (new ImageUtils())->validaTamanhoImagem($data['imagem']);
         }
 
@@ -142,11 +142,11 @@ class DbCoon
             $id = $token->id_usuario;
         }
 
-        if (isset($data["mapa_imagem"])) {
+        if (isset($data["mapa_imagem"]) && $data["mapa_imagem"] != "") {
             (new ImageUtils())->validaTamanhoImagem($data["mapa_imagem"]);
         }
 
-        if (isset($data['imagem'])) {
+        if (isset($data['imagem']) && $data['imagem'] != "") {
             (new ImageUtils())->validaTamanhoImagem($data['imagem']);
         }
 

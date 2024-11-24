@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\DAO\AnexosDAO;
 use App\http\Request;
 
 class AnexosController extends BaseController
@@ -21,5 +22,10 @@ class AnexosController extends BaseController
         ];
 
         parent::__construct('Anexos', $anexos_columns, $dados_obrigatorios);
+    }
+
+    public function findOneEspecieId($id)
+    {
+        return (new AnexosDAO())->selectByIdEspecieId($this->table_name, $id[0], $this->columns);
     }
 }

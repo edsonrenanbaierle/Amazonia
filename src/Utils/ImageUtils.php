@@ -11,6 +11,10 @@ class ImageUtils
         $maxSize = 2 * 1024 * 1024; // 2MB em bytes
         $base64 = explode(',', $imagem);
 
+        if(!is_array($base64) || sizeof($base64) == 1){
+            throw new Exception("Imagem com formato inválido!", 404);
+        }
+
         $base64Length = strlen(rtrim($base64[1], "=")) * 3 / 4;
 
 
