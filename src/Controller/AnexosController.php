@@ -9,7 +9,10 @@ class AnexosController extends BaseController
 {
     public function __construct()
     {
-       Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+        
         $anexos_columns = [
             "id",
             "especie_id",

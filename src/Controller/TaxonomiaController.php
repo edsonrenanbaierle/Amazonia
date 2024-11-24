@@ -8,7 +8,10 @@ class TaxonomiaController extends BaseController
 {
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+        
         $taxonomia_columns = [
             "id",
             "especie_id",

@@ -8,7 +8,10 @@ class ProducaoMudasController extends BaseController
 {
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+        
         $producao_mudas_columns = [
             "id",
             "especie_id",

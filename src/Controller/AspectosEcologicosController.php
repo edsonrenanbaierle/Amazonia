@@ -8,7 +8,10 @@ class AspectosEcologicosController extends BaseController
 {
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+        
         $aspectos_ecologicos_columns = [
             "id",
             "especie_id",

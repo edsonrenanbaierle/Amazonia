@@ -8,7 +8,10 @@ class PragasController extends BaseController
 {
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+        
         $pragas_columns = [
             "id",
             "especie_id",

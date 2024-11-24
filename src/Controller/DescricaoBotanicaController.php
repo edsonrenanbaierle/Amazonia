@@ -8,7 +8,10 @@ class DescricaoBotanicaController extends BaseController
 {
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+        
         $descricao_botanica_columns = [
             "id",
             "especie_id",

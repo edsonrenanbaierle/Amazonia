@@ -8,7 +8,10 @@ class ComposicaoBiotecnologicaController extends BaseController
 {
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+        
         $composicao_biotecnologica_columns = [
             "id",
             "especie_id",

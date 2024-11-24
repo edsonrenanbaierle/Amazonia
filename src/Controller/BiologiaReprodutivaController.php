@@ -8,7 +8,9 @@ class BiologiaReprodutivaController extends BaseController
 {
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
 
         $biologia_reprodutiva_columns = [
             "id",

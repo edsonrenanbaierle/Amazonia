@@ -8,7 +8,10 @@ class ProdutosUtilizacoesController extends BaseController
 {
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+        
         $produtos_utilizacoes_columns = [
             "id",
             "especie_id",

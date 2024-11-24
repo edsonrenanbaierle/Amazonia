@@ -8,7 +8,10 @@ class OcorrenciaNaturalController extends BaseController
 {   
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+        
         $ocorrencia_natural_columns = [
             "id",
             "especie_id",

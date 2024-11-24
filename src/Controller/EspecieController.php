@@ -9,7 +9,10 @@ class EspecieController extends BaseController
 {
     public function __construct()
     {
-        Request::authorization();
+        if($_SERVER['REQUEST_METHOD'] !== "GET"){
+            Request::authorization();
+        }
+       
         $especie_columns = [
             "id",
             "nome_cientifico",
