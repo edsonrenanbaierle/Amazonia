@@ -38,7 +38,8 @@ class DbCoon
         $stmt = $db->prepare($query);
         $stmt->execute();
 
-        return $stmt->fetchAll();
+        $data =  $stmt->fetchAll();
+        return $data ? $data : null;
     }
 
     // Função para realizar SELECT com base no ID
@@ -57,7 +58,7 @@ class DbCoon
         $stmt->execute();
 
         $data =  $stmt->fetch();
-        return $data ? $data : throw new \Exception("Falha ao buscar, dado especificado não encontrato!");
+        return $data ? $data : null;
     }
 
     // Função para realizar SELECT com base no ID
@@ -76,7 +77,7 @@ class DbCoon
         $stmt->execute();
 
         $data =  $stmt->fetch();
-        return $data ? $data : throw new \Exception("Falha ao buscar, dado especificado não encontrato!");
+        return $data ? $data : null;
     }
 
     // Função para realizar INSERT
