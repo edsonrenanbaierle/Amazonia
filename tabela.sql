@@ -51,8 +51,8 @@ CREATE TABLE DescricaoBotanica (
 CREATE TABLE BiologiaReprodutiva (
     id INT AUTO_INCREMENT PRIMARY KEY,
     especie_id INT NOT NULL,
-    sistema_sexual VARCHAR(255),
-    vetor_polinizacao VARCHAR(255),
+    sistema_sexual TEXT,
+    vetor_polinizacao TEXT,
     floracao TEXT,
     frutificacao TEXT,
     dispersao_frutos_sementes TEXT,
