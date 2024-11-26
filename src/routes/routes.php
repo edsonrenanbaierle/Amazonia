@@ -3,6 +3,7 @@
 
 $routes = [
     "GET/especies" => "EspecieController@findAll",
+    "GET/especies/all/{id}" => "EspecieController@getAll",
     "GET/especies/{id}" => "EspecieController@findOne",
     "POST/especies" => "EspecieController@create",
     "PUT/especies/{id}" => "EspecieController@update",

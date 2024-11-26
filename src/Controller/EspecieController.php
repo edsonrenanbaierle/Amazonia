@@ -26,4 +26,8 @@ class EspecieController extends BaseController
     public function delete($id){
        return (new EspecieDAO())->delete($id[0]);
     }
+
+    public function getAll($id){
+        return (new EspecieDAO())->fetchAllDataByEspecieId($id[0]);
+    }
 }

@@ -101,8 +101,8 @@ CREATE TABLE ProdutosUtilizacoes (
 CREATE TABLE ComposicaoBiotecnologica (
     id INT AUTO_INCREMENT PRIMARY KEY,
     especie_id INT NOT NULL,
-    variacao_carboidratos DECIMAL(5,2),
-    variacao_proteinas DECIMAL(5,2),
+    variacao_carboidratos TEXT,
+    variacao_proteinas TEXT,
     grupo_substancias TEXT,
     levantamento_bibliografico TEXT,
     biofertilizante TEXT,

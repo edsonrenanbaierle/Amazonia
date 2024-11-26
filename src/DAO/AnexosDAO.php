@@ -24,4 +24,6 @@ class AnexosDAO
         $data =  $stmt->fetchAll();
         return $data ? $data : throw new \Exception("Falha ao buscar, dado especificado não encontrato!");
     }
+
+   
 }
